@@ -11,11 +11,23 @@ Goals:
 # Playing Slippi Online!
 ## With `slippi-netplay` directly
 Run `slippi-netplay` or the desktop entry.
+```nix
+imports = [ inputs.ssbm-nix.overlay ];
+environment.systemPackages = [ pkgs.slippi-netplay ];
+```
 
 ## With `slippi-launcher`
+### NixOS
+Run `slippi-launcher` or the desktop entry.
+```nix
+imports = [ inputs.ssbm-nix.overlay ];
+environment.systemPackages = [ pkgs.slippi-launcher ];
+```
+### Home Manager
 Add the following to your Home Manager config:
 ```nix
-ssbm.slippi-launcher= {
+imports = [ inputs.ssbm-nix.homeManagerModule ];
+ssbm.slippi-launcher = {
   enable = true;
   # Replace with the path to your Melee ISO
   isoPath = "Path/To/SSBM.ciso";
@@ -23,6 +35,12 @@ ssbm.slippi-launcher= {
 ```
 
 # FAQ
+## Encountering Errors?
+
+If the launcher runs but produces errors, you can resolve them by doing:
+```sh
+rm -r .config/Slippi\ Launcher/
+```
 ## How do I enable the GCC overclock adapter?
 Enable the configuration option:
 ``` nix
@@ -40,9 +58,10 @@ The kernel module will be reloaded automatically on subsequent boots, since the 
 
 Generally, this should be all you need.
 
-1. Edit the `version` and reset the `hash` in `slippi-launcher/default.nix` to be the latest on https://github.com/project-slippi/slippi-launcher/releases
-2. Edit the `version` and reset the `hash` in `slippi/default.nix` to be the latest on https://github.com/project-slippi/Ishiiruka/releases
-3. Run `nix build .#slippi-launcher`. It will fail and you need to update the checksums as output.
+1. Edit the `version` and reset the `hash` in `slippi/launcher.nix` to be the latest on https://github.com/project-slippi/slippi-launcher/releases
+2. Edit the `version` and reset the `hash` in `slippi/netplay.nix` to be the latest on https://github.com/project-slippi/Ishiiruka/releases
+3. Edit the `version` and reset the `hash` in `slippi/playback.nix` to be the latest on https://github.com/project-slippi/Ishiiruka-Playback/releases
+4. Run `nix build .#slippi-launcher`. It will fail and you need to update the checksums as output.
 
 For reasons unbeknownst to me, sometimes you need to try building a couple times
 before it will succeed _even_ after updating checksums.
