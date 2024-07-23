@@ -3,7 +3,9 @@
   appimageTools,
   fetchurl,
   makeDesktopItem,
-  copyDesktopItems
+  copyDesktopItems,
+  slippi-netplay,
+  slippi-playback
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "slippi-launcher";
@@ -39,7 +41,21 @@ stdenvNoCC.mkDerivation rec {
     cp -r "${contents}/usr/share/icons" "$out/share"
 
     mkdir -p "$out/bin"
-    cp -r "${src-wrapped}/bin" "$out"
+    cp -r "${src-wrapped}/bin/slippi-launcher" "$out/.slippi-launcher"
+
+    cat > $out/bin/slippi-launcher <<EOF
+    #!/bin/sh
+    mkdir -p ~/.config/Slippi\ Launcher/netplay/
+    mkdir -p ~/.config/Slippi\ Launcher/playback/
+    echo ~
+
+    # Awful wrapper to make the launcher run the right binaries
+    ln -sf ${slippi-netplay}/bin/slippi-netplay ~/.config/Slippi\ Launcher/netplay/Slippi_Online-x86_64.AppImage
+    ln -sf ${slippi-playback}/bin/slippi-playback ~/.config/Slippi\ Launcher/playback/Slippi_Playback-x86_64.AppImage
+
+    exec $out/.slippi-launcher "\$@"
+    EOF
+    chmod +x $out/bin/slippi-launcher
     
     runHook postInstall
   '';

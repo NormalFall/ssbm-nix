@@ -166,11 +166,6 @@
                 autoUpdateLauncher = false;
               };
             };
-          
-          xdg.configFile."Slippi Launcher/netplay/Slippi_Online-x86_64.AppImage".source = 
-            (cfg.slippi-launcher.netplayDolphinPath + "/bin/slippi-netplay");
-          xdg.configFile."Slippi Launcher/playback/Slippi_Playback-x86_64.AppImage".source = 
-            (cfg.slippi-launcher.playbackDolphinPath + "/bin/slippi-playback");
         };
       };
   };
