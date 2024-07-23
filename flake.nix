@@ -12,14 +12,13 @@
     forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
   in {
     overlays.default = final: prev: import ./overlay.nix {inherit final prev;};
-    overlay = self.outputs.overlays.default;
 
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     apps = forAllSystems (system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [self.overlay];
+        overlays = [self.overlays.default];
       };
     in {
       slippi-netplay = {
@@ -54,6 +53,8 @@
         keyb0xx
         ;
     });
+
+    overlay = {nixpkgs.overlays = [ self.overlays.default ];};
 
     nixosModule = self.outputs.nixosModules.default;
     nixosModules.default = {config, ...}: let
