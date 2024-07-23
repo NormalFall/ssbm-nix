@@ -39,7 +39,7 @@ ssbm.slippi-launcher = {
 
 If the launcher runs but produces errors, you can resolve them by doing:
 ```sh
-rm -r .config/Slippi\ Launcher/
+rm -r ~/.config/Slippi\ Launcher/
 ```
 ## How do I enable the GCC overclock adapter?
 Enable the configuration option:
