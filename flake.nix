@@ -1,22 +1,17 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    slippi-desktop.url = "github:project-slippi/slippi-desktop-app";
-    slippi-desktop.flake = false;
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   description = "Nix expressions for Super Smash Bros. Melee players.";
 
   outputs = {
     self,
     nixpkgs,
-    slippi-desktop,
     ...
   }: let
     supportedSystems = ["x86_64-linux"];
     forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
   in {
-    overlays.default = final: prev: import ./overlay.nix {inherit slippi-desktop final prev;};
+    overlays.default = final: prev: import ./overlay.nix {inherit final prev;};
     overlay = self.outputs.overlays.default;
 
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);

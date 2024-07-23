@@ -18,24 +18,7 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "slippi-desktop": "slippi-desktop"
-      }
-    },
-    "slippi-desktop": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1713234497,
-        "narHash": "sha256-UOZo3YybBldkn1McZRr0oAYEieTtjCGgcA4YqpEOyXI=",
-        "owner": "project-slippi",
-        "repo": "slippi-desktop-app",
-        "rev": "ae8bb69e235b6e46b24bc966aeaa80f45030c6f9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "project-slippi",
-        "repo": "slippi-desktop-app",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },

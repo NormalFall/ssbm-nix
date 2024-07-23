@@ -1,5 +1,4 @@
 {
-  slippi-desktop,
   final,
   prev,
 }:
