@@ -62,7 +62,6 @@
     in
       with nixpkgs.lib; {
         options.ssbm = {
-          overlay.enable = mkEnableOption "Activate the package overlay.";
           cache.enable = mkEnableOption "Turn on cache.";
           gcc.oc-kmod.enable = mkEnableOption "Turn on overclocking kernel module.";
           gcc.rules.enable = mkEnableOption "Turn on rules for your gamecube controller adapter.";
@@ -81,7 +80,6 @@
           };
         };
         config = {
-          nixpkgs.overlays = [(mkIf cfg.overlay.enable self.overlays.default)];
           services.udev.extraRules = mkIf cfg.gcc.rules.enable cfg.gcc.rules.rules;
           boot.kernelModules = mkIf cfg.gcc.oc-kmod.enable ["gcadapter_oc"];
           boot.extraModulePackages = mkIf cfg.gcc.oc-kmod.enable [
