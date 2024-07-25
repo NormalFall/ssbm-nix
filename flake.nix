@@ -145,9 +145,9 @@
             };
           };
         };
-        config = {
+        config = mkIf cfg.slippi-launcher.enable {
           nixpkgs.overlays = [self.overlays.default];
-          home.packages = [(mkIf cfg.slippi-launcher.enable pkgs.slippi-launcher) ];
+          home.packages = [pkgs.slippi-launcher];
           xdg.configFile."Slippi Launcher/Settings".source = let
             jsonFormat = pkgs.formats.json {};
           in
