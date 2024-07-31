@@ -11,7 +11,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/project-slippi/Ishiiruka/releases/download/v${version}/Slippi_Online-x86_64.AppImage";
-    hash = "sha256-Ns0yhnb2H0wDj+vUtjSgujpVV8GjKrKSf+OoaCuXIKA=";
+    hash = "sha256-YXvSN+4NOvTuWErdOSEHBbP6rVsvNJCsJZu5C4VCH40=";
   };
   dontUnpack = true;
 
