@@ -27,7 +27,7 @@ stdenvNoCC.mkDerivation rec {
       name = "slippi-netplay";
       exec = "slippi-netplay";
       icon = "slippi-netplay";
-      desktopName = "Slippi netplay";
+      desktopName = "Slippi Netplay";
       comment = "The way to play Slippi Online and watch replays";
       type = "Application";
       categories = ["Game"];
@@ -38,8 +38,8 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p "$out/share"
-    cp -r "${contents}/usr/share/icons" "$out/share"
+    mkdir -p "$out/share/icons/hicolor/48x48/apps"
+    cp "${contents}/usr/share/icons/hicolor/48x48/apps/dolphin-emu.png" "$out/share/icons/hicolor/48x48/apps/slippi-netplay.png"
 
     mkdir -p "$out/bin"
     cp -r "${src-wrapped}/bin" "$out"
