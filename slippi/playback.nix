@@ -7,11 +7,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "slippi-playback";
-  version = "3.4.5";
+  version = "3.4.6";
 
   src = fetchzip {
     url = "https://github.com/project-slippi/Ishiiruka-Playback/releases/download/v${version}/playback-${version}-Linux.zip";
-    hash = "sha256-iCBdlcBPSRT8m772sqI+gSfNmVNAug0SfkSwVUE6+fE=";
+    hash = "sha256-bHbsdUs1pm7f/NSUn6f4s3LEL1Wbobq0h0TcQ0dCvbw=";
 
     stripRoot=false;
   };

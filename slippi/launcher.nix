@@ -9,11 +9,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "slippi-launcher";
-  version = "2.11.8";
+  version = "2.11.10";
 
   src = fetchurl {
     url = "https://github.com/project-slippi/slippi-launcher/releases/download/v${version}/Slippi-Launcher-${version}-x86_64.AppImage";
-    hash = "sha256-8krtzo878nh6oMTUhyPJIa/RkkebqQckb4Mh2+9SaiU=";
+    hash = "sha256-OrWd0jVqe6CzNbVRNlm2alt2NZ8uBYeHiASaB74ouW4=";
   };
   dontUnpack = true;
 
