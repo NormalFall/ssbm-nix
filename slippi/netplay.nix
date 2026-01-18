@@ -7,11 +7,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "slippi-netplay";
-  version = "3.5.1";
+  version = "3.5.2";
 
   src = fetchurl {
     url = "https://github.com/project-slippi/Ishiiruka/releases/download/v${version}/Slippi_Online-x86_64.AppImage";
-    hash = "sha256-HDtfjm+1xi/fMOGd1NfyO2j5QVUpLH2wFvDxy4HiJ3Q=";
+    hash = "sha256-wIW1mpG900P3KJn18mMY8IkU/4VlCoSONAbAFhF2YGQ=";
   };
   dontUnpack = true;
 
