@@ -19,7 +19,7 @@ stdenvNoCC.mkDerivation rec {
 
   src-wrapped = appimageTools.wrapType2 rec {
     inherit pname version src;
-    extraPkgs = pkgs: with pkgs; [curl zlib mpg123];
+    extraPkgs = pkgs: with pkgs; [curl zlib mpg123 libgpg-error];
   };
 
   desktopItems = [
