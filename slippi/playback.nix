@@ -7,11 +7,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "slippi-playback";
-  version = "3.5.2";
+  version = "3.7.0";
 
   src = fetchzip {
     url = "https://github.com/project-slippi/Ishiiruka-Playback/releases/download/v${version}/playback-${version}-Linux.zip";
-    hash = "sha256-LWo5gIXQck4dq9uKOYWElPsIUw2/GcMboteQsAx549k=";
+    hash = "sha256-80lKegoHQyqShUBLC9AU8O5TcQ/iqukd4KHfdNx4+H0=";
 
     stripRoot=false;
   };
@@ -23,7 +23,7 @@ stdenvNoCC.mkDerivation rec {
   appimage-wrapped = appimageTools.wrapType2 rec {
     inherit pname version;
     src = appimage;
-    extraPkgs = pkgs: with pkgs; [curl zlib mpg123];
+    extraPkgs = pkgs: with pkgs; [curl zlib mpg123 libgpg-error];
   };
 
   desktopItems = [
